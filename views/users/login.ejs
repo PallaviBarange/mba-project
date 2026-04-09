@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      min-height: 100vh;
+      background: url("/images/background.jpg") no-repeat center center / cover;
+    }
+
+    .glass-card {
+      background-color: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    ::placeholder {
+      color: #f1f1f1;
+    }
+  </style>
+</head>
+
+<body class="d-flex align-items-center justify-content-center">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-lg-4">
+
+        <div class="card shadow-lg border-0 text-white glass-card">
+
+          <div class="card-header bg-success text-white text-center fw-bold fs-4">
+            <i class="bi bi-box-arrow-in-right"></i> User Login
+          </div>
+
+          <div class="card-body p-4">
+
+            <% if (typeof error !== 'undefined') { %>
+              <div class="alert alert-danger"><%= error %></div>
+            <% } %>
+
+            <form action="/user/login" method="POST">
+
+              <div class="mb-3">
+                <input type="email" name="email"
+                  class="form-control bg-transparent text-white border-light"
+                  placeholder="Email address" required>
+              </div>
+
+              <div class="mb-4">
+                <input type="password" name="password"
+                  class="form-control bg-transparent text-white border-light"
+                  placeholder="Password" required>
+              </div>
+
+              <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-success btn-lg">
+                  Login
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="card-footer text-center bg-transparent">
+            <a href="/user/signup" class="text-white text-decoration-none">
+              Don’t have an account? <strong>Signup</strong>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
