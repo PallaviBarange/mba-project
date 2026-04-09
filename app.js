@@ -7,7 +7,8 @@ const mongoose = require("mongoose");
 const theatreRoutes = require("./routes/theatreRoutes");
 const userRoutes = require("./routes/userRoutes"); 
 const app = express();
-const dbConnectionUri = "mongodb://localhost:27017/moviedbs";
+
+const dbConnectionUri = process.env.MONGO_URI;
 
 app.use(
   session({
@@ -29,19 +30,19 @@ const upload = multer({ storage: fileStorage, limits: { fileSize: 5 * 1024 * 102
 app.use("/uploads", express.static("uploads"));
 
 app.set("view engine", "ejs");
-// app.set("views", __dirname + "/views"); 
-
 
 app.use("/theatre", theatreRoutes(upload)); 
 app.use("/images", express.static("images"));
 app.use("/user", userRoutes);
 
-
 mongoose.connect(dbConnectionUri)
   .then(() => {
-    console.log("MongoDB connected to moviedbs");
-    app.listen(3004, () => {
-      console.log("Server running on http://localhost:3004");
+    console.log("MongoDB connected");
+
+    const PORT = process.env.PORT || 3004;
+
+    app.listen(PORT, () => {
+      console.log("Server running on port " + PORT);
     });
   })
   .catch((error) => {
