@@ -48,7 +48,7 @@ app.use("/images", express.static("images"));
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.send("🎬 MBA Project Backend is Running Successfully!");
+  res.send("MBA Project Backend is Running Successfully!");
 });
 
 app.use("/theatre", theatreRoutes(upload));
@@ -62,7 +62,7 @@ mongoose
 
     const PORT = process.env.PORT || 3004;
     app.listen(PORT, () => {
-      console.log("🚀 Server running on port " + PORT);
+      console.log("Server running on port " + PORT);
     });
   })
   .catch((error) => {
